@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Customer Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- favicons -->
+<link href="/images/favicon.png" rel="icon" />
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" />
+
+<!-- fonts -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<!-- modern JS -->
+<script src="/js/modernizr-2.6.2.min.js"></script>
+</head>
+
+<style>
+	div {
+	padding: 5px;
+	margin: 5px;
+	}
+</style>
+
+<body>
+	<div class="top-nav" style="text-align: right;">
+		<a href="/">
+			<img alt="Home" src="/images/favicon.png" width="20" height="20"/>
+		</a>
+		<a href="/">Home</a> |
+		<a href="/login">Users Login</a>
+	</div>
+
+	<div class="main" style="text-align: center;">
+		<h3>Customer Register</h3>
+		<form action="/register/customer/auth" method="POST">
+			<label>Email:</label><input type="text" name = "email" placeholder="email" required/></br>
+			<label>Username:</label><input type="text" name = "name" placeholder="username" required/></br>
+			<label>Password:</label><input type="password" name = "password" placeholder="password" required/></br>
+			<br>
+			<label>Passport:</label><br>
+				<label>Passport No:</label><input type="number" name = "passport_number" placeholder="passport_number" required/></br>
+				<label>Expiration Date:</label><input type="date" name = "passport_expiration" placeholder="passport_expiration" required/></br>
+				<label>Citizenship:</label><input type="text" name = "passport_country" placeholder="passport_country" required/></br>
+			<br>
+			<label>Address:</label><br>
+				<label>Building No:</label><input type="number" name = "building_number" placeholder="building_number" required/></br>
+				<label>Street:</label><input type="text" name = "street" placeholder="street" required/></br>
+				<label>City:</label><input type="text" name = "city" placeholder="city" required/></br>
+				<label>State:</label><input type="text" name = "state" placeholder="state"/></br>
+			<br>
+			<label>Phone:</label><input type="number" name = "phone_number" placeholder="phone_number" required/></br>
+			<label>Birthday:</label><input type="date" name = "date_of_birth" placeholder="birthay" required/></br>
+			<br>
+			<button type="submit" class="btn btn-primary">register</button>
+			{% if error %}
+				<p class="text-danger"><strong>Error:</strong> {{error}}</p>
+			{% endif %}
+		</form>
+	</div>
+
+	<h5 style="text-align: center;">
+		<strong>Note</strong>: 
+		Quotation marks are escaped when saving input to our databse.
+	</h5> 
+	
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Staff Reports</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- favicons -->
+<link href="/images/favicon.png" rel="icon" />
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" />
+
+<!-- fonts -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<!-- modern JS -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<style>
+	div {
+	padding: 5px;
+	margin: 5px;
+	}
+</style>
+
+<body>
+
+	<div class="top-nav" style="text-align: right;">
+		<a href="/">
+			<img alt="Home" src="/images/favicon.png" width="20" height="20"/>
+		</a>
+		<a href="/staff/home">Home</a> |
+		<a href="/logout">Logout</a>
+	</div>
+	
+	<div class="main">
+		<!-- <h3>Hi, {{username}}!</h3> -->
+        
+		{% if posts %}
+			<h2><strong>{{posts[0][1]}}</strong>'s Tickets Report</h2>
+		{% else %}
+            <h2>Tickets Report</h2>
+		{% endif %}
+		{% if ticket %}
+            <h2 style="text-align: center;">Total # Ticket Sold: <strong>{{totalTickets}}</strong></h2>
+			<h4 style="text-align: center;"> between {{startDate}} and {{endDate}}</h4>
+        {% else %}
+            <h2 style="text-align: center;">Total # Ticket Sold</h2>
+        {% endif %}
+
+        
+        <div style="text-align: center; height: 100px; width: 800px; margin: auto;">
+			<form action="/staff/ticket" method="POST">
+                <label>Start:</label>
+                <input type="date" name = "start" placeholder="start" onfocus="(this.type='date')"  onblur="(this.type='text')" required/>
+                <label>End:</label>
+                <input type="date" name = "end" placeholder="end" onfocus="(this.type='date')"  onblur="(this.type='text')" required/>
+                <button type="submit" class="btn btn-primary">Search</button>
+                {% if error %}
+                <p class="text-danger"><strong>Sorry:</strong> {{error}}</p>
+                {% endif %}
+                </br></br>
+            </form>
+		</div>
+
+		{% if ticket %}
+		<div style="text-align: center;">
+			<!-- <h3>Montly Tickets Sold</h3> -->
+			<div id="staffTicket" style="width: 800px; height: 300px; margin: auto;"></div>
+			<script type="text/javascript">
+				const new_time = {{time|tojson}};
+				const new_monthticket = {{monthTickets|tojson}};
+			</script>
+			<script type="text/javascript" src="{{ url_for('static', filename='js/')}}{{'staffTickets.js'}}"></script>
+		</div>
+		{% endif %}
+
+    </div>
+    
+</body>
+
+</html>
