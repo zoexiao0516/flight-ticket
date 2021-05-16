@@ -1,12 +1,12 @@
-# online air ticket reservation system
+# Online Flight Ticket Booking and Management System
 A list of the files in the application and what is in each file.
 
 ## Back-End
 ### `app.py` file
-Read about all the back-end logic functions [here](https://github.com/CinnyLin/airline/blob/main/READMEfunctions.md)
+Read about all the back-end logic functions [here](functions.md)
 
 ### `sql` folder
-Read about the database structure [here](https://github.com/CinnyLin/airline/blob/main/sql/READMEsql.md)
+Read about the database structure [here](sql/sql.md)
 
 
 ## Front-End
@@ -96,4 +96,3 @@ error pages
 ## Distribution of Work
 - **Cinny Lin**: back-end, front-end
 - **Zoe Xiao**: front-end
-![contribution analysis](contributions.png)
