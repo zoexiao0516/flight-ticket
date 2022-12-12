@@ -91,8 +91,3 @@ error pages
 1. `403.html`
 2. `404.html`
 3. `500.html`
-
-
-## Distribution of Work
-- **Cinny Lin**: back-end, front-end
-- **Zoe Xiao**: front-end
